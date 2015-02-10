@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flock", "lib\Flock2D\Flock.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLogger", "lib\PrintMethods\DataLogger.csproj", "{458B6621-C0F7-438D-A242-DEA935F820DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatsLib", "StatsLib\StatsLib.csproj", "{7C37455A-89E2-4683-A5C7-B7CFAB5956D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stat_test", "stat_test\stat_test.csproj", "{53C37AD4-A7B2-4837-A1E2-845ABFAB52E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -29,16 +33,21 @@ Global
 		{458B6621-C0F7-438D-A242-DEA935F820DF}.Debug|x86.Build.0 = Debug|Any CPU
 		{458B6621-C0F7-438D-A242-DEA935F820DF}.Release|x86.ActiveCfg = Release|Any CPU
 		{458B6621-C0F7-438D-A242-DEA935F820DF}.Release|x86.Build.0 = Release|Any CPU
+		{53C37AD4-A7B2-4837-A1E2-845ABFAB52E2}.Debug|x86.ActiveCfg = Debug|x86
+		{53C37AD4-A7B2-4837-A1E2-845ABFAB52E2}.Debug|x86.Build.0 = Debug|x86
+		{53C37AD4-A7B2-4837-A1E2-845ABFAB52E2}.Release|x86.ActiveCfg = Release|x86
+		{53C37AD4-A7B2-4837-A1E2-845ABFAB52E2}.Release|x86.Build.0 = Release|x86
 		{54540AFA-9F18-4401-B238-7915CAD9893E}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{54540AFA-9F18-4401-B238-7915CAD9893E}.Debug|x86.Build.0 = Debug|Any CPU
 		{54540AFA-9F18-4401-B238-7915CAD9893E}.Release|x86.ActiveCfg = Release|Any CPU
 		{54540AFA-9F18-4401-B238-7915CAD9893E}.Release|x86.Build.0 = Release|Any CPU
+		{7C37455A-89E2-4683-A5C7-B7CFAB5956D3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C37455A-89E2-4683-A5C7-B7CFAB5956D3}.Debug|x86.Build.0 = Debug|Any CPU
+		{7C37455A-89E2-4683-A5C7-B7CFAB5956D3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C37455A-89E2-4683-A5C7-B7CFAB5956D3}.Release|x86.Build.0 = Release|Any CPU
 		{9D38450F-0969-4FED-AB70-2AAC7DC90BB5}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{9D38450F-0969-4FED-AB70-2AAC7DC90BB5}.Debug|x86.Build.0 = Debug|Any CPU
 		{9D38450F-0969-4FED-AB70-2AAC7DC90BB5}.Release|x86.ActiveCfg = Release|Any CPU
 		{9D38450F-0969-4FED-AB70-2AAC7DC90BB5}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Flock2D\Swarming2D.csproj
 	EndGlobalSection
 EndGlobal

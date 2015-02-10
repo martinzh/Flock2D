@@ -1,0 +1,9 @@
+/home/martin/GitRepos/Flock2D/stat_test/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/stat_test.exe.mdb
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/stat_test.exe
+/home/martin/GitRepos/Flock2D/stat_test/obj/x86/Debug/stat_test.exe
+/home/martin/GitRepos/Flock2D/stat_test/obj/x86/Debug/stat_test.exe.mdb
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/StatsLib.dll
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/StatsLib.dll.mdb
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/Vector2D.dll
+/home/martin/GitRepos/Flock2D/stat_test/bin/Debug/Vector2D.dll.mdb

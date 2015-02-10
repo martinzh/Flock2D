@@ -1,0 +1,5 @@
+/home/martin/GitRepos/Flock2D/StatsLib/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/martin/GitRepos/Flock2D/StatsLib/bin/Debug/StatsLib.dll.mdb
+/home/martin/GitRepos/Flock2D/StatsLib/bin/Debug/StatsLib.dll
+/home/martin/GitRepos/Flock2D/StatsLib/obj/Debug/StatsLib.dll
+/home/martin/GitRepos/Flock2D/StatsLib/obj/Debug/StatsLib.dll.mdb
