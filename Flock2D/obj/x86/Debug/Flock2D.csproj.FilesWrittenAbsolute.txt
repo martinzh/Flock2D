@@ -1,0 +1,6 @@
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/obj/x86/Debug//Flock2D.resources.dll
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/Flock2D.exe.mdb
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/Flock2D.exe
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/obj/x86/Debug/Flock2D.exe
+/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/obj/x86/Debug/Flock2D.exe.mdb

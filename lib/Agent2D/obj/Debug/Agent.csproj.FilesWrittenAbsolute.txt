@@ -1,0 +1,7 @@
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/bin/Debug/Agent2D.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/bin/Debug/Agent2D.dll
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/obj/Debug/Agent2D.dll
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/obj/Debug/Agent2D.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/bin/Debug/Vector2D.dll
+/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/bin/Debug/Vector2D.dll.mdb

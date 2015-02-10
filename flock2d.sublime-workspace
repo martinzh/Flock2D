@@ -1,0 +1,852 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"i",
+				"i"
+			],
+			[
+				"for",
+				"for	for … done"
+			],
+			[
+				"geometr",
+				"geometrico"
+			],
+			[
+				"f",
+				"f"
+			],
+			[
+				"Al",
+				"AlignVels"
+			],
+			[
+				"prom",
+				"prom_geom"
+			],
+			[
+				"st_",
+				"st_adjacen"
+			],
+			[
+				"st",
+				"st_mat_dist"
+			],
+			[
+				"W",
+				"WriteLine"
+			],
+			[
+				"dist",
+				"dists"
+			],
+			[
+				"dis",
+				"dists"
+			],
+			[
+				"st_d",
+				"st_dist_R"
+			],
+			[
+				"num",
+				"num_bin"
+			],
+			[
+				"e",
+				"epsilon"
+			],
+			[
+				"nu",
+				"num_bin"
+			],
+			[
+				"w",
+				"WriteLine"
+			],
+			[
+				"Calc",
+				"CalcDistR"
+			],
+			[
+				"Di",
+				"Dist"
+			],
+			[
+				"FOR",
+				"foreach"
+			],
+			[
+				"psi",
+				"psi_inst"
+			],
+			[
+				"vel",
+				"vel_prom"
+			],
+			[
+				"ang_",
+				"ang_topo"
+			],
+			[
+				"ang",
+				"ang_geom"
+			],
+			[
+				"sq",
+				"sqrt	sqrt"
+			],
+			[
+				"ata",
+				"atan2	atan2"
+			],
+			[
+				"bac",
+				"bac"
+			],
+			[
+				"prom_",
+				"prom_topo"
+			],
+			[
+				"ligh",
+				"light	lights"
+			],
+			[
+				"upd",
+				"updateSize"
+			],
+			[
+				"sp",
+				"sphere	sphere"
+			],
+			[
+				"backgr",
+				"background	background grey alpha"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"ke",
+				"key	key"
+			],
+			[
+				"key",
+				"key	keyPressed"
+			],
+			[
+				"r",
+				"r"
+			],
+			[
+				"println",
+				"println	println var"
+			],
+			[
+				"el",
+				"ellipse	ellipse"
+			],
+			[
+				"an",
+				"angleBetween"
+			],
+			[
+				"print",
+				"println	println var"
+			],
+			[
+				"Agent",
+				"Agent2D"
+			],
+			[
+				"lin",
+				"link	link"
+			],
+			[
+				"flo",
+				"flock"
+			],
+			[
+				"random",
+				"random2D"
+			],
+			[
+				"rand",
+				"random	random"
+			],
+			[
+				"stro",
+				"stroke	stroke grey"
+			],
+			[
+				"no",
+				"nofill	noFill"
+			],
+			[
+				"si",
+				"size	size"
+			],
+			[
+				"se",
+				"setup	setup"
+			],
+			[
+				"st_da",
+				"st_data1"
+			],
+			[
+				"N",
+				"Norm"
+			],
+			[
+				"p",
+				"pos"
+			],
+			[
+				"D",
+				"Dist"
+			],
+			[
+				"Pr",
+				"Print_vel"
+			],
+			[
+				"d",
+				"dot"
+			],
+			[
+				"else",
+				"else	Else"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"A",
+				"Acos"
+			],
+			[
+				"T",
+				"ToString"
+			],
+			[
+				"C",
+				"Console"
+			],
+			[
+				"Ne",
+				"NextSimDouble"
+			],
+			[
+				"Con",
+				"Console"
+			],
+			[
+				"VE",
+				"Vector3D"
+			],
+			[
+				"this",
+				"this"
+			],
+			[
+				"Cr",
+				"Cross"
+			],
+			[
+				"Ve",
+				"Vector3D"
+			],
+			[
+				"Vec",
+				"Vec_Quat"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"Qua",
+				"Quaternion"
+			],
+			[
+				"v",
+				"v"
+			],
+			[
+				"m",
+				"Members"
+			],
+			[
+				"M",
+				"Math"
+			],
+			[
+				"V",
+				"Vector3D"
+			],
+			[
+				"retur",
+				"return"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"li",
+				"links"
+			],
+			[
+				"S",
+				"string"
+			],
+			[
+				"L",
+				"Length"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Flock2D/sim_flock_2d.cs",
+			"settings":
+			{
+				"buffer_size": 5566,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/PrintMethods/printing.cs",
+			"settings":
+			{
+				"buffer_size": 5637,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/Vector2D/vector.cs",
+			"settings":
+			{
+				"buffer_size": 2015,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/Agent2D/agent_def.cs",
+			"settings":
+			{
+				"buffer_size": 4648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/Flock2D/flock_def.cs",
+			"settings":
+			{
+				"buffer_size": 4908,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"pacl",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/sript_bash.py",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/corridas.sh",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/lib/Agent2D/agent_def.cs",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/sim_flock_2d.cs",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/lib/PrintMethods/printing.cs",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/lib/Flock2D/flock_def.cs",
+		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/Flock2D.dll",
+		"/home/martin/FLOCKS/flockc3D/swarm_3d.cs",
+		"/home/martin/FLOCKS/flockc3D/log_scripts/graf.gp",
+		"/home/martin/FLOCKS/flockc3D/log_scripts/dist_script.py",
+		"/home/martin/FLOCKS/flockc3D/log_scripts/script.py",
+		"/home/martin/FLOCKS/flockc3D/vector2D_class_def.cs",
+		"/home/martin/FLOCKS/flockc3D/swarm_2d.cs",
+		"/home/martin/FLOCKS/flockc3D/test.cs",
+		"/home/martin/Documents/supercollider.txt",
+		"/home/martin/Documents/Burocracia/motivacion_havana.txt",
+		"/home/martin/FLOCKS/flockc3D/DefsSwarm.cs",
+		"/home/martin/FLOCKS/flockc3D/log_scripts/plot_script.py",
+		"/home/martin/FLOCKS/flockc3D/log_scripts/swarm_2d.cs",
+		"/home/martin/FLOCKS/in_process/flocks.cs",
+		"/home/martin/FLOCKS/in_process/quats_test.cs",
+		"/home/martin/FLOCKS/in_process/quats.cs",
+		"/home/martin/FLOCKS/visual/flock_3d/def_class_quaternion.pde",
+		"/home/martin/FLOCKS/visual/flock_3d/def_class_agent.pde",
+		"/home/martin/FLOCKS/visual/flock_2d/def_class_agent.pde",
+		"/home/martin/FLOCKS/visual/flock_2d/flock_2d.pde",
+		"/home/martin/FLOCKS/visual/flock_2d/def_class_flock.pde",
+		"/home/martin/FLOCKS/in_process/log_scripts/script.py",
+		"/media/martin/KINGSTON8GB/calc_pi.py",
+		"/home/martin/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/martin/.config/sublime-text-3/Packages/Alignment/Default (Linux).sublime-keymap",
+		"/home/martin/.config/sublime-text-3/Packages/User/C#.sublime-settings",
+		"/home/martin/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/martin/.config/sublime-text-3/Packages/Alignment/Base File.sublime-settings",
+		"/home/martin/FLOCKS/in_process/log_scripts/test.dat",
+		"/home/martin/FLOCKS/in_process/log_scripts/graf.gp",
+		"/home/martin/FLOCKS/in_process/log_scripts/plot_script.py",
+		"/home/martin/FLOCKS/otro/Program.cs",
+		"/home/martin/FLOCKS/test.cs",
+		"/home/martin/sketchbook/bicis/test_mapa/test_mapa.pde",
+		"/home/martin/sketchbook/bicis/mapa_ecobici/mapa_ecobici.pde",
+		"/home/martin/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/martin/sketchbook/bicis/mapa_ecobici/data/ecobiciestaciones.csv",
+		"/home/martin/TERMITAS/sim_term/levy_test.cpp",
+		"/home/martin/TERMITAS/sim_term/walkers_lib.h",
+		"/home/martin/TERMITAS/sim_term/test.cpp",
+		"/home/martin/TERMITAS/simulacion_c++/finales/sim_campo_pair.cpp",
+		"/home/martin/TERMITAS/simulacion_c++/finales/prueba.cpp",
+		"/home/martin/Dropbox/Public/Cursosy creditos",
+		"/home/martin/CONCIERTOS"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"0",
+			"Console",
+			"\"log_scripts",
+			"//",
+			" //",
+			"vel",
+			"Console",
+			"t",
+			"=============================================================================================\n",
+			";\n",
+			"psi_inst",
+			"\":\" + str(2*i+2) +",
+			"3",
+			";\n",
+			"d",
+			"Agent",
+			"agent",
+			"Agent",
+			"prom",
+			"N",
+			"prom",
+			"N",
+			"Vector3D",
+			"this.",
+			"this",
+			"Vector3D",
+			"Length",
+			"4",
+			"n",
+			"10",
+			"bottom",
+			"boid",
+			"PI/2",
+			"-PI/2",
+			"top",
+			"tang_top",
+			"ang",
+			"n",
+			"prom",
+			"radius",
+			"2D",
+			"prom",
+			"n",
+			"ht",
+			"= true",
+			"go",
+			"hg",
+			"80,20",
+			"dt",
+			"pp",
+			"100",
+			"axis",
+			"Agent2D",
+			"3",
+			"Agent2D",
+			"0",
+			"n",
+			"this.",
+			"ht",
+			"N",
+			"links",
+			"Vector3D",
+			"Double",
+			"double",
+			"ShowGeomLinks",
+			");\n",
+			"x",
+			"V",
+			"L",
+			"N",
+			"V",
+			"L",
+			"agent",
+			"boid",
+			"double",
+			"public",
+			"double",
+			"rnd.NextSimDouble(1)",
+			"Vector3D",
+			"PVector",
+			"vels",
+			"this.",
+			"= ",
+			");\n",
+			"h",
+			"data",
+			"this.",
+			"Vector3D",
+			"this",
+			"v1",
+			"this.",
+			"Quaternion",
+			"v1.x - v2.x,",
+			"MyRand",
+			"MyRand.NextSimDouble(1)",
+			"MyRand.NextSimDouble(L)",
+			"));\n",
+			"2*V * rnd.NextDouble() - V",
+			"2*L * rnd.NextDouble() - L",
+			");\n",
+			"v1",
+			"--",
+			"[-300:300]",
+			"Align",
+			"pos",
+			"+ \":\" + str(3*i+1)",
+			"script.write(data + \" using \" + str(3*i) + \":\" + str(3*i+1) + \" w lp, \\\\\\n\")",
+			"left",
+			"str",
+			"Vector3D",
+			"L",
+			"Vector3D",
+			"double[]",
+			"//---------------------------------------//\n// Definicion de la clase\n//---------------------------------------//\n\npublic class Agent {\n\n	public double[] pos;\n	public double[] vel;\n	public int[] links;\n\n	// L --> tamanio de la caja (cubica) \n	// V --> vel maxima\n	// k --> numero de interacciones\n\n	public Agent(double L, double V, int k){\n\n		Random rnd = new Random();\n\n		double x = L*rnd.NextDouble()-L;\n		double y = L*rnd.NextDouble()-L;\n		double z = L*rnd.NextDouble()-L;\n\n		pos = new double[] {x,y,z};\n\n		// pos = new Vector3D(L*rnd.NextDouble()-L,L*rnd.NextDouble()-L,L*rnd.NextDouble()-L);\n\n		double vx = V*rnd.NextDouble()-V;\n		double vy = V*rnd.NextDouble()-V;\n		double vz = V*rnd.NextDouble()-V;\n\n		vel = new double[] {vx,vy,vz};\n\n		links = new int[k];\n\n	}\n}\n\n//---------------------------------------//\n",
+			"float",
+			"Vector3D",
+			"\n//---------------------------------------//",
+			"L*rnd.NextDouble()-L",
+			"neigh",
+			"float",
+			"int",
+			"<int,int>",
+			"Sem. 1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Flock2D/sim_flock_2d.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5566,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2093,
+								2093
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 663.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "lib/PrintMethods/printing.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 39.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/Vector2D/vector.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 117.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "lib/Agent2D/agent_def.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "lib/Flock2D/flock_def.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 176.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "flock2d.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

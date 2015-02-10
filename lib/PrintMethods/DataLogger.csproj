@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{458B6621-C0F7-438D-A242-DEA935F820DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DataLogger</RootNamespace>
+    <AssemblyName>PrintMethods</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="printing.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Agent2D\Agent.csproj">
+      <Project>{9D38450F-0969-4FED-AB70-2AAC7DC90BB5}</Project>
+      <Name>Agent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vector2D\Vector.csproj">
+      <Project>{54540AFA-9F18-4401-B238-7915CAD9893E}</Project>
+      <Name>Vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flock2D\Flock.csproj">
+      <Project>{40DD3EB4-787E-422C-8D39-703978788CB7}</Project>
+      <Name>Flock</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
