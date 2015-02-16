@@ -29,7 +29,18 @@ namespace StatTest
 
 			Console.WriteLine("ok");
 
-			StatsTool.GetDists(path, 0);
+			double[,] dists = new double[N, N];
+
+			dists = StatsTool.GetDists(path, N, 0);
+
+			Console.WriteLine("ok Dist");
+
+			//for (int i = 0; i < N; i++) {
+			//	Console.WriteLine (dists [0, i]);
+			//}
+
+			double[] vecDist = StatsTool.DistMatToVec(dists,N);
+
 		}
 	}
 }
