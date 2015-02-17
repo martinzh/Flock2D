@@ -98,17 +98,17 @@ namespace StatsLib{
 
 // =============================================================================================
 
-		public static double[,] GetVecs(string path, int N){
+		public static double[,] GetVecs(string path, string vecs, int iter, int N){
 
-			string distsFile = path + "/dist_mat/" + t.ToString() + ".dat";
+			string vecsFile = path + "/" + vecs + ".dat";
 
-			Console.WriteLine(distsFile);
+			Console.WriteLine(vecsFile);
 
-			String input = File.ReadAllText( distsFile );
+			String input = File.ReadAllText( vecsFile );
 
 			int i = 0, j = 0;
 
-			double[,] result = new double[N, N];
+			double[,] result = new double[iter, 2*N+1];
 
 			Console.WriteLine ("start read");
 

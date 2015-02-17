@@ -27,6 +27,8 @@ namespace StatTest
 			int t_f         = (int)parsArray[8]; //iteraciones totales
 			int step        = (int)parsArray[9]; //frecuencia de muestreo
 
+			int itTot = t_f/step;
+
 			Console.WriteLine("ok");
 
 			double[,] dists = new double[N, N];

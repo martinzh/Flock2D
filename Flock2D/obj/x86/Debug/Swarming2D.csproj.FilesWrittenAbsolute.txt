@@ -11,3 +11,16 @@
 /home/martin/GitRepos/Flock2D/Flock2D/bin/Debug/PrintMethods.dll.mdb
 /home/martin/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.dll
 /home/martin/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.exe.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.exe
+/Users/martinzh/GitRepos/Flock2D/Flock2D/obj/x86/Debug/Flock2D.exe
+/Users/martinzh/GitRepos/Flock2D/Flock2D/obj/x86/Debug/Flock2D.exe.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Agent2D.dll
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Agent2D.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Vector2D.dll
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Vector2D.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/PrintMethods.dll
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/PrintMethods.dll.mdb
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.dll
+/Users/martinzh/GitRepos/Flock2D/Flock2D/bin/Debug/Flock2D.dll.mdb
