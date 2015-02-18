@@ -4,24 +4,12 @@
 		"selected_items":
 		[
 			[
-				"dists",
-				"distsFile"
-			],
-			[
-				"S",
-				"StatsTool"
-			],
-			[
-				"Wr",
-				"WriteLine"
+				"i",
+				"i"
 			],
 			[
 				"for",
-				"foreach	ForEach"
-			],
-			[
-				"i",
-				"i"
+				"for	for … done"
 			],
 			[
 				"geometr",
@@ -316,6 +304,10 @@
 				"links"
 			],
 			[
+				"S",
+				"string"
+			],
+			[
 				"L",
 				"Length"
 			]
@@ -327,7 +319,7 @@
 			"file": "StatsLib/StatsLib.cs",
 			"settings":
 			{
-				"buffer_size": 1996,
+				"buffer_size": 3075,
 				"line_ending": "Unix"
 			}
 		},
@@ -335,23 +327,7 @@
 			"file": "stat_test/Program.cs",
 			"settings":
 			{
-				"buffer_size": 949,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
-			"settings":
-			{
-				"buffer_size": 5530,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
-			"settings":
-			{
-				"buffer_size": 3067,
+				"buffer_size": 1197,
 				"line_ending": "Unix"
 			}
 		}
@@ -396,12 +372,15 @@
 	},
 	"file_history":
 	[
-		"/home/martin/GitRepos/Flock2D/Flock2D/sim_flock_2d.cs",
-		"/home/martin/GitRepos/Flock2D/lib/Flock2D/flock_def.cs",
-		"/home/martin/GitRepos/Flock2D/lib/Agent2D/agent_def.cs",
-		"/home/martin/GitRepos/Flock2D/lib/Vector2D/vector.cs",
-		"/home/martin/GitRepos/Flock2D/lib/PrintMethods/printing.cs",
-		"/home/martin/GitRepos/Flock2D/StatsLib/MyClass.cs",
+		"/Users/martinzh/GitRepos/Flock2D/lib/Flock2D/flock_def.cs",
+		"/Users/martinzh/GitRepos/Flock2D/lib/Agent2D/agent_def.cs",
+		"/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/vector.cs",
+		"/Users/martinzh/GitRepos/Flock2D/lib/PrintMethods/printing.cs",
+		"/Users/martinzh/GitRepos/Flock2D/Flock2D/sim_flock_2d.cs",
+		"/Users/martinzh/Documents/laboratorio/graphs.gp",
+		"/Users/martinzh/Documents/laboratorio/freq_dep 05_6feb.txt",
+		"/Users/martinzh/Documents/laboratorio/freq_dep.txt",
+		"/Users/martinzh/Documents/laboratorio/intensity_fliter_35.dat",
 		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/sript_bash.py",
 		"/home/martin/FLOCKS/flock2D_mono/Flock2D/Flock2D/bin/Debug/corridas.sh",
 		"/home/martin/FLOCKS/flock2D_mono/Flock2D/lib/Agent2D/agent_def.cs",
@@ -455,7 +434,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -469,13 +448,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"double",
-			"();\n",
-			"parametros",
-			"\";\n",
-			"dat",
-			".ToInt()",
-			"params",
+			"distsFile",
+			"this",
 			"0",
 			"Console",
 			"\"log_scripts",
@@ -596,7 +570,9 @@
 			"L*rnd.NextDouble()-L",
 			"neigh",
 			"float",
-			"int"
+			"int",
+			"<int,int>",
+			"Sem. 1"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -623,23 +599,24 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1996,
+						"buffer_size": 3075,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1441,
-								1441
+								2107,
+								2107
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 1051.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -648,7 +625,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -657,84 +634,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 949,
+						"buffer_size": 1197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								939,
-								939
+								900,
+								900
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5530,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1128,
-								1128
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3067,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1326,
-								1326
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -742,7 +662,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 21.0
 	},
 	"input":
 	{
@@ -768,7 +688,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.582775878906,
 			1.0
 		],
 		"rows":
@@ -789,7 +709,7 @@
 	"project": "flock2d.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
