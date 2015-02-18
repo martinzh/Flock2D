@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Flock2D/Swarming2D.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="StatsLib/StatsLib.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="lib/Vector2D/vector.cs">
     <Files>
-      <File FileName="StatsLib/StatsLib.cs" Line="145" Column="1" />
-      <File FileName="stat_test/Program.cs" Line="54" Column="8" NotebookId="1" />
+      <File FileName="StatsLib/StatsLib.cs" Line="4" Column="19" />
+      <File FileName="lib/Vector2D/vector.cs" Line="1" Column="1" />
+      <File FileName="stat_test/Program.cs" Line="33" Column="6" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

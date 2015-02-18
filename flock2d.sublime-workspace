@@ -343,7 +343,7 @@
 			"file": "StatsLib/StatsLib.cs",
 			"settings":
 			{
-				"buffer_size": 3304,
+				"buffer_size": 3428,
 				"line_ending": "Unix"
 			}
 		},
@@ -351,12 +351,23 @@
 			"file": "stat_test/Program.cs",
 			"settings":
 			{
-				"buffer_size": 2009,
+				"buffer_size": 2033,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "lib/PrintMethods/printing.cs",
+			"settings":
+			{
+				"buffer_size": 5637,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# Manejo de los datos de la simulacion con Python\n# Libreria para automatizar\n# Martin Zumaya Hernandez 2014\n\nimport networkx as nx\nimport matplotlib.pyplot as plt\nfrom pylab import *\nimport sys\n\nsys.setrecursionlimit(3000)\n\next = \".txt\" #Extension de los archivos de datos\ndists = \"dists/\" #Directorio con archivos de distancias\n\n########################################################\n\n# Obtiene parametros de archivo en el directorio path\n\ndef GetParams(path):\n\n	params = []\n\n	data = open(path + \"params.txt\",'rb')\n\n	for line in data.readlines():\n	    # print(repr(line.split()[0]) +\"\\t\"+ repr(line.split()[-1]))\n	    params.append(float(line.split()[-1]))\n\n	data.close()\n\n	return params\n\n########################################################\n\n# Obtiene matriz de distancias completa\ndef GetDists(path, t, N):\n\n	DD = [] #Arreglo para guradar distancias\n\n	ruta = path + dists + repr(t) + ext\n	# print(ruta)\n\n	data = open(ruta,'rb')\n\n	i = 0\n\n	for line in data.readlines():\n\n		# dd = []\n\n		vals = line.split()\n\n		# print(repr(len(vals))+\"\\n\")\n		# print(repr(i)+\"\\n\")\n\n		# for k in range(len(vals)):\n		for k in range(i+1,N):\n\n			# dd.append(float(vals[k]))\n			DD.append(float(vals[k]))\n\n		# DD.append(dd)\n\n		i += 1\n\n	# print(len(DD))\n\n	return DD\n\n########################################################\n\n# Calcula distribucion de distancias\ndef CalcHist(dists, num_bin):\n\n	bins = arange(1,num_bin+1) #Arreglo de bins\n	hist = zeros(num_bin) #inicializa el histograma\n\n	DD = []\n\n	j = 0\n\n	n = len(dists)\n\n	# print(n)\n\n	for i in range(n):\n\n	    for k in range(n-j):\n\n	        DD.append(dists[i][k])\n\n	    j += 1\n\n	DD.sort() #Ordena de menor a mayor\n\n	#print DD[0]\n	#print len(DD)\n\n	epsilon = DD[-1]/num_bin #Tamanio de cada bin en funcion del maximo\n\n	for d in DD:\n	    count = d/epsilon\n	    if count > 0: hist[int(count-1)] += 1.0 #contador de cada bin\n\n	# Calcula distancia promedio\n	r_prom = 0\n\n	# for i in range(int(num_bin)):\n	for i in range(int(num_bin)):\n\n		# r_prom += (epsilon*(i)*hist[i])/num_bin\n		# r_prom += epsilon*(i+1)*hist[i]\n		r_prom += epsilon*i*hist[i]\n\n	r_prom *= 1/num_bin\n\n	#Falta determinar bien el r mas probable\n\n	r_max = np.argmax(hist)*epsilon # distancia mas probable\n	std_dev = np.std(DD) #desviacion estandar\n\n	return [hist,r_prom,r_max,std_dev,epsilon,sum(hist)]\n\n########################################################\n########################################################\n\n# Calcula distribucion de distancias (version numpy)\n\ndef CalcHist1(dists, num_bin):\n\n	dists.sort() #Ordena de menor a mayor\n\n	#print dists[0]\n	#print len(dists)\n\n	epsilon = dists[-1]/num_bin #Tamanio de cada bin en funcion del maximo\n\n	# for d in dists:\n	#     count = d/epsilon\n	#     if count > 0: hist[int(count-1)] += 1.0 #contador de cada bin\n\n	hist = np.histogram(dists,num_bin, density = True)\n	# hist = np.histogram(dists,num_bin)\n\n	# Calcula distancia promedio\n	r_prom = 0\n\n	# for i in range(int(num_bin)):\n	for i in range(int(num_bin)):\n\n		# r_prom += (epsilon*(i)*hist[i])/num_bin\n		# r_prom += epsilon*(i+1)*hist[i]\n		# r_prom += epsilon*i*hist[0][i]\n		r_prom += np.diff(hist[1])[i]*i*hist[0][i]\n\n	# r_prom *= 1/num_bin\n\n	#Falta determinar bien el r mas probable\n\n	r_max = np.argmax(hist[0])*epsilon # distancia mas probable\n	std_dev = np.std(dists) #desviacion estandar\n\n	return [hist[0],r_prom,r_max,std_dev,epsilon,sum(hist[0]),hist[1]]\n\n########################################################\n\n# Calcula lista de adjacencia a partir de dists y r\ndef CalcAdjs(dists,r):\n\n	ADJ = [] #adjacencia toda la red\n\n	for i in range(len(dists)):\n\n		adj = [] #adjacencia particula i\n\n		adj.append(i)\n\n		for j in range(len(dists[i])):\n\n			if dists[i][j] > 0 and dists[i][j] <= r :\n\n				adj.append(j)\n\n		ADJ.append(adj)\n\n	return ADJ\n\n########################################################\n\n########################################################\n\n# Calcula lista de adjacencia a partir de dists y r\ndef CalcAdjs1(N,dists,r):\n\n	ADJ = [] #adjacencia toda la red\n\n	k = 0\n\n	for i in range(N):\n\n		adj = [] #adjacencia particula i\n\n		adj.append(i)\n\n		for j in range(i+1,N):\n\n			if dists[k] > 0 and dists[k] <= r :\n\n				adj.append(j)\n\n			k += 1\n\n		ADJ.append(adj)\n\n	return ADJ\n\n########################################################\n\n# Imprime lista de adjacencia\ndef PrintAdjs(adj):\n	for i in range(len(adj)):\n		print(adj[i])\n\n########################################################\n\n# Etiqueta los elementos de la vecindad\n\ndef set_label(U,i,c,label):\n\n	L = len(U[i]) # Accede a la vecindad de la part i\n\n	if L != 0: # Si la vecindad no es vacia\n\n		for j in range(L): # para los vecinos de...\n\n			k = U[i][j] # indice de vecino\n\n			# print (k)\n\n			if label[k] == 0:\n\n				label[k] = label[i]\n\n				set_label(U,k,c,label)\n\n########################################################\n\n# CLUSTERING RECURSIVO\n\ndef Cluster(neigh):\n\n	c = 1 # etiqueta de cluster inicial\n\n	for i in range(len(neigh)):\n\n		neigh[i].pop(0)\n\n		#print (neigh[i])\n\n	label = zeros(len(neigh)) # vector de etiquetas\n	cl_size = {} # diccionario: llave:cluster, valor:tamanio\n	#print (labels)\n\n	for i in range(len(neigh)):\n\n		if label[i] == 0:\n\n			cl_size[c] = 1\n\n			label[i] = c\n\n			# print (label)\n\n			set_label(neigh,i,c,label)\n\n			# print (label)\n		else: cl_size[label[i]] += 1\n\n		c += 1\n\n	# numero de clusters\n	NC = len(cl_size)\n\n	# indice mas alto\n	IM = max(cl_size)\n\n	# llaves\n	# sorted(cl_size.keys())\n	# valores\n	# sorted(cl_size.values())\n\n	# cluster mas grande\n	CM = sorted(cl_size.values())[-1]\n\n	# print (label)\n	return [label,cl_size,CM]\n",
 			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
 				"buffer_size": 5530,
@@ -364,7 +375,10 @@
 			}
 		},
 		{
+			"contents": "# Manejo de los datos de la simulacion con Python\n# Libreria para automatizar\n# Martin Zumaya Hernandez 2014\n\nfrom LibData import *\nimport pylab\nimport sys\n# import numpy as np\n\n# Parametros de linea de comandos:\n# 1 -> conectividad\n\n# ruta a directorio principal, se identifica por f\n\nf = float(sys.argv[1]) #conectividad en funcion de fraccion de N\n\n#path = \"../data_f\"+ str(f) +\"/\"\n#path = \"../DATA/data_f\"+ str(f)+ \"_ro\"+str(p) +\"/\"\n# path = \"../GitRepos/DATA/data_f\"+ str(f) +\"/\"\n\npath = \"../../DATA/data_f\"+ str(f) +\"/\"\n\n# img_path = \"../../Grafs/con_r0\"\nimg_path = \"../../Grafs/con_rprom\"\n# img_path = \"../../Grafs/\"+ str(f) +\"/\"\n\n# print (path)\n\n# Estructura parametros:\n	# Particulas\n	# densidad\n	# radio\n	# f\n	# ruido geometrico\n	# ruido topologico\n	# peso geometrico\n	# regimen de velocidad\n	# iteraciones\n	# paso\n\n# obtiene parametros de archivo\nparams = GetParams(path)\n# print(params)\n\nN        = int(params[0]) #Numero de particulas\nro       = params[1] #Densidad\nr_0      = params[2] #Radio interaccion (vel_reg)\nf        = params[3] #Fraccion de N en largo alcance\nnoise_sh = params[4] #Ruido corto\nnoise_lg = params[5] #Ruido largo\nrel_weig = params[6] #Peso Relativo vecindades\nreg_vel  = params[7] #Regimen de velocidad\nt_f      = params[8] #iteraciones totales\nstep     = params[9] #frecuencia de muestreo\n\n# step    = 250 #frecuencia de muestreo (Se obtiene del archivo de params)\nnum_bin = 200\n\nbin_vec = arange(1,num_bin+1)\n\ntiempo = arange(1,t_f+step,step)\n\n# print(tiempo)\n\nit_tot = t_f/step #muestras totales\n# print(it_tot)\n\nmax_cls = [] # Para guardar clsuter mas grande\n\n# cls_data = open(img_path+\"cls_data\"+str(f)+\".dat\",'w')\ncls_data = open(img_path+\"/datos_clusters/cls_data\"+str(f)+\".txt\",'w')\n\nfor i in range(-1,int(it_tot)):\n\n	if i == -1:\n		j = 1\n	else:\n		j =	(i+1)*int(step)\n\n	# print(repr(j))\n\n	dists = GetDists(path,j,N) #obtiene distancias\n	# print(dists)\n\n	# hist = CalcHist(dists,num_bin) #calcula histograma\n	hist = CalcHist1(dists,num_bin) #calcula histograma\n\n	# print(hist[5])\n\n	print(str(f) + \"\\t\" + repr(j) + \"\\tr_prom:\" + repr(hist[1])\n			+ \"\\tr_0:\" + repr(r_0) + \"\\tr_max:\" + repr(hist[2]))\n\n	# adj = CalcAdjs1(N,dists,r_0) #calcula adjacencias con r_0\n	adj = CalcAdjs1(N,dists,hist[1]) #calcula adjacencias con r_prom\n	# adj = CalcAdjs1(N,dists,hist[1]) #calcula adjacencias con r_max\n	\n	# adj = CalcAdjs(dists,r_0) #calcula adjacencias con r_0\n	# adj = CalcAdjs(dists,hist[1]) #calcula adjacencias con r_prom\n	# adj = CalcAdjs(dists,hist[2]) #calcula adjacencias con r_max\n	# PrintAdjs(adj)\n\n	# print(sum(hist[0]))\n	# print(hist[1:4])\n\n	clusters = Cluster(adj)\n	# print(clusters[1])\n\n	# print(\"mas grande:\")\n	# print(clusters[2]/N)\n\n	max_cls.append(clusters[2]/N)\n\n	pylab.plot(bin_vec,hist[0])\n	# pylab.plot(hist[4]*bin_vec,hist[0])\n	# pylab.plot(hist[6],hist[0])\n\n	cls_data.write(repr(j) + \"\\t\" + repr(clusters[2]/N) + \"\\n\")\n\npylab.savefig(img_path+\"/graficas_distribucion/dist_\"+str(f)+\".png\")\n\ncls_data.close()\n\n# print(max_cls)\n# pylab.plot(tiempo,max_cls)\n# pylab.savefig(img_path+\"cluster_t_\"+str(f)+\".png\")\n",
 			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
 				"buffer_size": 3067,
@@ -639,15 +653,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3304,
+						"buffer_size": 3428,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2948,
-								2948
+								117,
+								117
 							]
 						],
 						"settings":
@@ -655,10 +669,10 @@
 							"syntax": "Packages/C#/C#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1215.0,
+						"translation.y": 1305.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -673,15 +687,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2009,
+						"buffer_size": 2033,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1474,
-								1474
+								1189,
+								1189
 							]
 						],
 						"settings":
@@ -689,14 +703,43 @@
 							"syntax": "Packages/C#/C#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 315.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "lib/PrintMethods/printing.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
 					"semi_transient": false,
 					"settings":
@@ -721,11 +764,11 @@
 						"translation.y": 1035.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
 					"semi_transient": false,
 					"settings":
@@ -750,7 +793,7 @@
 						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -832,7 +875,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
