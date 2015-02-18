@@ -29,10 +29,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="AForge.Math">
+      <HintPath>..\..\..\Development\AForge.NET Framework-2.2.5\Release\AForge.Math.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatsLib.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\lib\Vector2D\Vector.csproj">
+      <Project>{54540AFA-9F18-4401-B238-7915CAD9893E}</Project>
+      <Name>Vector</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
