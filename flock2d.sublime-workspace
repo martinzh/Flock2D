@@ -4,8 +4,37 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"i",
 				"i"
+=======
+				"pars",
+				"parsArray"
+			],
+			[
+				"tr",
+				"trays"
+			],
+			[
+				"it",
+				"itTot"
+			],
+			[
+				"rt",
+				"return"
+			],
+			[
+				"dists",
+				"distsFile"
+			],
+			[
+				"S",
+				"StatsTool"
+			],
+			[
+				"Wr",
+				"WriteLine"
+>>>>>>> FETCH_HEAD
 			],
 			[
 				"for",
@@ -319,7 +348,11 @@
 			"file": "StatsLib/StatsLib.cs",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 3075,
+=======
+				"buffer_size": 3304,
+>>>>>>> FETCH_HEAD
 				"line_ending": "Unix"
 			}
 		},
@@ -327,7 +360,27 @@
 			"file": "stat_test/Program.cs",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 1197,
+=======
+				"buffer_size": 2009,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
+			"settings":
+			{
+				"buffer_size": 5530,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
+			"settings":
+			{
+				"buffer_size": 3067,
+>>>>>>> FETCH_HEAD
 				"line_ending": "Unix"
 			}
 		}
@@ -448,8 +501,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"distsFile",
 			"this",
+=======
+			"dis",
+			"double",
+			"();\n",
+			"parametros",
+			"\";\n",
+			"dat",
+			".ToInt()",
+			"params",
+>>>>>>> FETCH_HEAD
 			"0",
 			"Console",
 			"\"log_scripts",
@@ -569,10 +633,14 @@
 			"\n//---------------------------------------//",
 			"L*rnd.NextDouble()-L",
 			"neigh",
+<<<<<<< HEAD
 			"float",
 			"int",
 			"<int,int>",
 			"Sem. 1"
+=======
+			"float"
+>>>>>>> FETCH_HEAD
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -599,15 +667,24 @@
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 3075,
+=======
+						"buffer_size": 3304,
+>>>>>>> FETCH_HEAD
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								2107,
 								2107
+=======
+								2948,
+								2948
+>>>>>>> FETCH_HEAD
 							]
 						],
 						"settings":
@@ -616,7 +693,11 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 1051.0,
+=======
+						"translation.y": 1215.0,
+>>>>>>> FETCH_HEAD
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -634,15 +715,52 @@
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 1197,
+=======
+						"buffer_size": 2009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+								1474,
+								1474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/LibData.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5530,
+>>>>>>> FETCH_HEAD
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
 								900,
 								900
+=======
+								1931,
+								1931
+>>>>>>> FETCH_HEAD
 							]
 						],
 						"settings":
@@ -651,11 +769,47 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 0.0,
+=======
+						"translation.y": 1035.0,
+>>>>>>> FETCH_HEAD
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
+<<<<<<< HEAD
+=======
+				},
+				{
+					"buffer": 3,
+					"file": "/home/martin/GitRepos/JuliaFlocks/PyData/Stats.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1326,
+								1326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+>>>>>>> FETCH_HEAD
 				}
 			]
 		}

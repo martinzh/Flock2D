@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using AForge.Math;
+using System.Linq;
+using Vector;
 
 namespace StatsLib{
 
@@ -41,7 +44,7 @@ namespace StatsLib{
 
 // =============================================================================================
 
-		public static double[,] GetDists(string path, int N, int t){
+		public static void GetDists(string path, int N, int t, double[,] result){
 
 			string distsFile = path + "/dist_mat/" + t.ToString() + ".dat";
 
@@ -51,9 +54,7 @@ namespace StatsLib{
 
 			int i = 0, j = 0;
 
-			double[,] result = new double[N, N];
-
-			Console.WriteLine ("start read");
+			// Console.WriteLine ("start read");
 
 			foreach (var row in input.Split('\n'))
 			{
@@ -70,8 +71,7 @@ namespace StatsLib{
 				i++;
 			}
 
-			Console.WriteLine ("end read");
-			return result;
+			// Console.WriteLine ("end read");
 		}
 
 // =============================================================================================
@@ -98,7 +98,7 @@ namespace StatsLib{
 
 // =============================================================================================
 
-		public static double[,] GetVecs(string path, string vecs, int iter, int N){
+		public static void GetVecs(string path, string vecs, int n, double[,] result){
 
 			string vecsFile = path + "/" + vecs + ".dat";
 
@@ -108,28 +108,40 @@ namespace StatsLib{
 
 			int i = 0, j = 0;
 
-			double[,] result = new double[iter, 2*N+1];
-
-			Console.WriteLine ("start read");
+			// Console.WriteLine ("start read");
 
 			foreach (var row in input.Split('\n'))
 			{
 				j = 0;
-
-				foreach (var col in row.Trim().Split('\t'))
-				{	
-					double dis;
-					Double.TryParse (col.Trim(), out dis);
-					//Console.WriteLine ( "{0}\t{1}\t{2}" ,i , j, dis);
-					if(i < N) result[i, j] = dis;
-					j++;
+				if (i < n) 
+				{
+					foreach (var col in row.Trim().Split('\t'))
+					{	
+						double comp;
+						Double.TryParse (col.Trim(), out comp);
+						// Console.WriteLine ( "{0}\t{1}\t{2}" ,i , j, comp);
+						result[i, j] = comp;
+						j++;
+					}
+					i++;					
 				}
-				i++;
 			}
 
-			Console.WriteLine ("end read");
-			return result;
+			// Console.WriteLine ("end read");
 		}
+
+// =============================================================================================
+
+		public static void CalcHist(double[] dists, int iter, int step){
+			IEnumerable<int> numbers = Enumerable.Range(0, iter+1).Select(x => x * step);
+
+			foreach (int t in numbers) {
+				Console.WriteLine (t);
+			}
+
+			//Histogram hist = new Histogram(dists);
+		}
+
 
 // =============================================================================================
 

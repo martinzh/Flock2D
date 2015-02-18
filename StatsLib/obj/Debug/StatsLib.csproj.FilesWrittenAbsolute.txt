@@ -8,3 +8,6 @@
 /Users/martinzh/GitRepos/Flock2D/StatsLib/bin/Debug/StatsLib.dll
 /Users/martinzh/GitRepos/Flock2D/StatsLib/obj/Debug/StatsLib.dll
 /Users/martinzh/GitRepos/Flock2D/StatsLib/obj/Debug/StatsLib.dll.mdb
+/home/martin/GitRepos/Flock2D/StatsLib/bin/Debug/AForge.Math.dll
+/home/martin/GitRepos/Flock2D/StatsLib/bin/Debug/AForge.dll
+/home/martin/GitRepos/Flock2D/StatsLib/bin/Debug/AForge.xml
