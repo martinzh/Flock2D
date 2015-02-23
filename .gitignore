@@ -1,4 +1,4 @@
-
+.gitignore
 Flock2D/bin/Debug/corridas.sh
 
 *.dat
