@@ -25,7 +25,8 @@ print(N)
 script.write("#!/bin/bash\n")
 
 eta = "0.1"
-ro = "1080"
+ro  = "1080"
+w   = "0.25"
 
 # for i in range(N):
 
@@ -37,9 +38,9 @@ ro = "1080"
 for i in range(N):
 
   if i%(procs) == 0:
-    script.write( "(time mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + T + " " + rate + ") 2>> tiempo.dat \n" )
+    script.write( "(time mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + w + " " + T + " " + rate + ") 2>> tiempo.dat \n" )
   else:
-    script.write( "(time nohup mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + T + " " + rate + " &) 2>> tiempo.dat\n" )
+    script.write( "(time nohup mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + w + " " + T + " " + rate + " &) 2>> tiempo.dat\n" )
 
 
 
