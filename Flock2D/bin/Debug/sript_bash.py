@@ -11,9 +11,9 @@ import sys
 nombre = 'corridas.sh'
 script = open(nombre,'w')
 
-start = float(sys.argv[1])
-stop  = float(sys.argv[2])
-step  = float(sys.argv[3])
+start = int(sys.argv[1])
+stop  = int(sys.argv[2])
+step  = int(sys.argv[3])
 T     = sys.argv[4]
 rate  = sys.argv[5]
 procs = float(sys.argv[6])
@@ -24,25 +24,22 @@ print(N)
 
 script.write("#!/bin/bash\n")
 
-ht = "0.005"
-l  = "0.25"
-pg = "0.0"
-ro = "1.2"
-
+eta = "0.1"
+ro = "1080"
 
 # for i in range(N):
 
 #   if i%(procs) == 0:
-#     script.write( "./Flock2D.exe " + repr(start + round(i*step,7)) + " " + pg + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + "\n" )
+#     script.write( "./Flock2D.exe " + repr(start + round(i*step,7)) + " " + eta + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + "\n" )
 #   else:
-#     script.write( "nohup ./Flock2D.exe " + repr(start + round(i*step,7)) + " " + pg + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + " &\n" )
+#     script.write( "nohup ./Flock2D.exe " + repr(start + round(i*step,7)) + " " + eta + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + " &\n" )
 
 for i in range(N):
 
   if i%(procs) == 0:
-    script.write( "(time ./Flock2D.exe " + repr(start + round(i*step,7)) + " " + pg + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + ") 2>> tiempo.dat \n" )
+    script.write( "(time mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + T + " " + rate + ") 2>> tiempo.dat \n" )
   else:
-    script.write( "(time nohup ./Flock2D.exe " + repr(start + round(i*step,7)) + " " + pg + " " + ro + " " + T + " " + l + " " + ht +  " " + ht + " " + rate + " &) 2>> tiempo.dat\n" )
+    script.write( "(time nohup mono Flock2D.exe " + repr(i) + " " + eta + " " + ro + " " + T + " " + rate + " &) 2>> tiempo.dat\n" )
 
 
 
