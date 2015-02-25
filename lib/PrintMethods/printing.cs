@@ -202,7 +202,7 @@ namespace DataLogger{
 
 		public static void PrintMatrixDist(int t, double[,] matrix, int m, int n, string folder){
 
-			string paso = folder + "/dist_mat/" + t + ".dat";
+			string paso = folder + "/dist_mat/" + t + ".txt";
 
 //			Console.WriteLine(paso);
 

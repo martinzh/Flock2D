@@ -37,12 +37,14 @@ namespace Swarm2D
 
 			if (args.Length != 0) {
 
-				Console.WriteLine (args.Length);
+				//Console.WriteLine (args.Length);
 
-				k 	   = Convert.ToInt32(args [0]);
-				eta    = Convert.ToDouble(args[1]);
-				tf      = Convert.ToInt32(args[2]);
-				step   = Convert.ToInt32(args[3]);
+				k 	 = Convert.ToInt32(args [0]);
+				eta  = Convert.ToDouble(args[1]);
+				p    = Convert.ToDouble(args[2]);
+				tf   = Convert.ToInt32(args[3]);
+				step = Convert.ToInt32(args[4]);
+
 
 				//folder = "./DATOS/data_eta" + args[1] + "_k" + args[0];
 				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + args[1] + "_k" + args[0];
@@ -50,20 +52,21 @@ namespace Swarm2D
 			}
 			else { // valores default
 
-				k      = 0;
-				eta    = 0.1;
-				tf    = 1000;
-				step   = 50;
+				k    = 0;
+				eta  = 0.1;
+				tf   = 1000;
+				step = 50;
+				p    = 500.0;
 
 				//folder = "./DATOS/data_eta" + eta + "_k" + k ;
 				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + eta + "_k" + k ;				
 			}
 
-			dt = 1.0;
-			v0 = 1.0;
+			dt 	   = 1.0;
+			v0     = 1.0;
 			regVel = 0.08;
-			w = 0.0;
-			p = 350.0;
+			w 	   = 0.0;
+
 			r0 = v0*dt/regVel;
 			//l = r0;
 			l = 1.0;
@@ -95,13 +98,13 @@ namespace Swarm2D
 // ==================================== Trayectorias ==============================================
 
 			FileStream data;
-			data = new FileStream( folder + "/trays.dat", FileMode.Create);
+			data = new FileStream( folder + "/trays.txt", FileMode.Create);
 			var st_data = new StreamWriter(data);
 
 // ==================================== Velocidades ==============================================
 
 			FileStream vels;
-			vels = new FileStream( folder + "/vels.dat", FileMode.Create);
+			vels = new FileStream( folder + "/vels.txt", FileMode.Create);
 			var st_vels = new StreamWriter(vels);
 
 // ==================================== Desplazamiento promedio ==============================================
@@ -125,7 +128,7 @@ namespace Swarm2D
 // ==================================== Pars. Simulacion ==============================================
 
 			 FileStream pars;
-			 pars = new FileStream( folder + "/parametros.dat", FileMode.Create);
+			 pars = new FileStream( folder + "/parametros.txt", FileMode.Create);
 			 var st_pars = new StreamWriter(pars);
 
 			st_pars.WriteLine("Particulas = " + n);
