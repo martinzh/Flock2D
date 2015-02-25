@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Collections;
 using Flock;
-using Agent;
-using Vector;
 using DataLogger;
+
+//using System.Collections.Generic;
+//using System.Collections;
+//using Agent;
+//using Vector;
+
 
 namespace Swarm2D
 {
@@ -17,20 +19,19 @@ namespace Swarm2D
 // ==================================== Parametros ==============================================
 
 	// dt -> delta t
-	// f -> fraccion de conexiones aleatorias relativo al total de parts
+	// k -> Conectividad de la red de interaccion
 	// Vo -> magnitud de la velocidad de las particulas
-	// ht ->ruido topologico
-	// hg -> ruido geometrico
-	// pg -> peso de vecindad geometrica
+	// eta -> magnitud del ruido
+	// w -> peso de vecindad geometrica
 	// p  -> densidad
 	// psi -> parametro de orden
-	// l  -> regimen de velocidad (tamanio de paso relativo al radio de interaccion)
-	// r -> radio de interaccion
+	// regVel  -> regimen de velocidad (tamanio de paso relativo al radio de interaccion)
+	// r0 -> radio de interaccion
 	// N -> numero de particulas
 
-		double dt = 1, f, Vo = 1, ht, hg, pg, p, l, r, N;
+		double dt, v0, eta, w, p, regVel, r0, l;
 
-		int L = 30, T, step, k;
+		int tf, step, k, n;
 
 		string folder;
 
@@ -38,59 +39,49 @@ namespace Swarm2D
 
 				Console.WriteLine (args.Length);
 
-				f      = Convert.ToDouble(args[0]);
-				pg     = Convert.ToDouble(args[1]);
-				p      = Convert.ToDouble(args[2]);
-				T      = Convert.ToInt32(args[3]);
-				l      = Convert.ToDouble(args[4]);
-				ht     = Convert.ToDouble(args[5]);
-				hg     = Convert.ToDouble(args[6]);
-				step   = Convert.ToInt32(args[7]);
-				// folder = "./DATOS/data_f" + args[0] + "_pg" + args[1];
-				folder = "./DATOS/data_f" + args[0] ;
+				k 	   = Convert.ToInt32(args [0]);
+				eta    = Convert.ToDouble(args[1]);
+				tf      = Convert.ToInt32(args[2]);
+				step   = Convert.ToInt32(args[3]);
+
+				//folder = "./DATOS/data_eta" + args[1] + "_k" + args[0];
+				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + args[1] + "_k" + args[0];
 				
 			}
 			else { // valores default
 
-				f      = 0.005;
-
-				// ht     = 0.1;
-				// hg     = 0.1;
-
-				ht     = 0.0;
-				hg     = 0.0;
-
-				pg     = 0;
-				p      = 1.2;
-				l      = 0.25;
-				//T      = 25000;
-				T      = 1000;
+				k      = 0;
+				eta    = 0.1;
+				tf    = 1000;
 				step   = 50;
-				// folder = "./DATOS/data_f" + f + "_pg" + pg;
-				folder = "./DATOS/data_f" + f ;
-				
+
+				//folder = "./DATOS/data_eta" + eta + "_k" + k ;
+				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + eta + "_k" + k ;				
 			}
 
-			N = (double)L*(double)L*p;
-			r = Vo*dt/l;
-			k = (int)(f * N);
+			dt = 1.0;
+			v0 = 1.0;
+			regVel = 0.08;
+			w = 0.0;
+			p = 350.0;
+			r0 = v0*dt/regVel;
+			//l = r0;
+			l = 1.0;
+			n = (int)(l*l*p);
 
-			Console.WriteLine("Particulas = " + (int)N);
+			Console.WriteLine("Particulas = " + n);
 			Console.WriteLine("densidad = " + p);
-			Console.WriteLine("radio = " + r);
-			Console.WriteLine("links = " + (int)k);
-			// Console.WriteLine("f = " + args[0]);
-			Console.WriteLine("f = " + f);
-			Console.WriteLine("ruido geometrico = " + hg);
-			Console.WriteLine("ruido topologico = " + ht);
-			Console.WriteLine("peso geometrico = " + pg);
-			Console.WriteLine("regimen de velocidad = " + l);
-			Console.WriteLine("iteraciones = " + T);
+			Console.WriteLine("radio = " + r0);
+			Console.WriteLine("conectividad = " + k);
+			Console.WriteLine("intensidad de ruido = " + eta);
+			Console.WriteLine("peso geometrica = " + w);
+			Console.WriteLine("regimen de velocidad = " + regVel);
+			Console.WriteLine("iteraciones = " + tf);
 			Console.WriteLine("paso = " + step);
 
 			Console.WriteLine();
 
-			Flock2D flock = new Flock2D((int)N, L, Vo, (int)f, r);
+			var flock = new Flock2D(n, l, v0, k);
 
 //			Console.WriteLine("parts = " + flock.elements.Length);
 
@@ -99,61 +90,59 @@ namespace Swarm2D
 			DirectoryInfo di = Directory.CreateDirectory(folder);
 			
 			di = Directory.CreateDirectory(folder + "/dist_mat");
-			di = Directory.CreateDirectory(folder + "/adj_mat");
+			//di = Directory.CreateDirectory(folder + "/adj_mat");
 			
 // ==================================== Trayectorias ==============================================
 
 			FileStream data;
 			data = new FileStream( folder + "/trays.dat", FileMode.Create);
-			StreamWriter st_data = new StreamWriter(data);
+			var st_data = new StreamWriter(data);
 
 // ==================================== Velocidades ==============================================
 
 			FileStream vels;
 			vels = new FileStream( folder + "/vels.dat", FileMode.Create);
-			StreamWriter st_vels = new StreamWriter(vels);
+			var st_vels = new StreamWriter(vels);
 
 // ==================================== Desplazamiento promedio ==============================================
-
+/*
 			FileStream des_prom;
 			des_prom = new FileStream( folder + "/des_prom.dat", FileMode.Create);
-			StreamWriter st_des_prom = new StreamWriter(des_prom);
+			var st_des_prom = new StreamWriter(des_prom);
 
 // ==================================== Parametro de orden ==============================================
 
 			FileStream psi_inst;
 			psi_inst = new FileStream( folder + "/psi.dat", FileMode.Create);
-			StreamWriter st_psi_inst = new StreamWriter(psi_inst);
+			var st_psi_inst = new StreamWriter(psi_inst);
 
 // ==================================== Distribucion R ==============================================
 
 			FileStream dist_R;
 			dist_R = new FileStream( folder + "/dist_R.dat", FileMode.Create);
-			StreamWriter st_dist_R = new StreamWriter(dist_R);
-
+			var st_dist_R = new StreamWriter(dist_R);
+*/
 // ==================================== Pars. Simulacion ==============================================
 
 			 FileStream pars;
 			 pars = new FileStream( folder + "/parametros.dat", FileMode.Create);
-			 StreamWriter st_pars = new StreamWriter(pars);
+			 var st_pars = new StreamWriter(pars);
 
-			st_pars.WriteLine("Particulas = " + (int)N);
+			st_pars.WriteLine("Particulas = " + n);
 			st_pars.WriteLine("densidad = " + p);
-			st_pars.WriteLine("radio = " + r);
-			st_pars.WriteLine("links = " + (int)k);
-			//st_pars.WriteLine("f = " + args[0]);
-			st_pars.WriteLine("f = " + f);
-			st_pars.WriteLine("ruido geometrico = " + hg);
-			st_pars.WriteLine("ruido topologico = " + ht);
-			st_pars.WriteLine("peso geometrico = " + pg);
-			st_pars.WriteLine("regimen de velocidad = " + l);
-			st_pars.WriteLine("iteraciones = " + T);
+			st_pars.WriteLine("radio = " + r0);
+			st_pars.WriteLine("conectividad = " + k);
+			st_pars.WriteLine("intensidad de ruido = " + eta);
+			st_pars.WriteLine("peso geometrica = " + w);
+			st_pars.WriteLine("regimen de velocidad = " + regVel);
+			st_pars.WriteLine("iteraciones = " + tf);
+			st_pars.WriteLine("paso = " + step);
 
 // ==================================== Actualizacion ==============================================
 
-			for (int i = 0; i < T+1; i++){
+			for (int i = 0; i < tf+1; i++){
 
-				flock.Update(dt, pg, hg ,ht);
+				flock.Update(dt, w, eta, r0);
 
 				// Console.WriteLine("t = {0}",i);
 
@@ -161,11 +150,11 @@ namespace Swarm2D
 
 					Console.WriteLine("t = {0}",i);
 
-					Logger.PrintMatrixDist(i,flock.dists, flock.elements.Length, flock.elements.Length, folder);
+					Logger.PrintMatrixDist(i,flock.Dists, flock.Elements.Length, flock.Elements.Length, folder);
 					// Logger.PrintMatrixAdj(i, flock.adj, flock.elements.Length, flock.elements.Length, folder);
 
-					Logger.Print_pos(flock, st_data, i);
-					Logger.Print_vel(flock, st_vels, i);
+					Logger.PrintPos(flock, st_data);
+					Logger.PrintVel(flock, st_vels);
 				}
 
 			}
@@ -174,10 +163,11 @@ namespace Swarm2D
 
 			st_data.Close();
 			st_vels.Close();
-			st_des_prom.Close();
-			st_psi_inst.Close();
-			st_dist_R.Close();
 			st_pars.Close();
+
+			//st_des_prom.Close();
+			//st_psi_inst.Close();
+			//st_dist_R.Close();
 
 			Console.WriteLine("done");
 		}

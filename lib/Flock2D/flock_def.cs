@@ -6,187 +6,142 @@ namespace Flock{
 
 	public class Flock2D{
 
-		// elements --> arreglo con los agentes
-		// N --> numero de miembros
 		Random rnd = new Random(Guid.NewGuid().GetHashCode());
-		public Agent2D[] elements;
-		public double[,] dists; // Matriz con las distancias del flock
-		public Vector2D[] vels; // Matriz con las posiciones del flock
-		public Vector2D[] pos; // Matriz con las velocidades del flock
-		public int[,] adj; // Matriz de adjacencia geometrica
+
+		public Agent2D[] Elements; // Arreglo con los elementos del flock
+		public double[,] Dists; // Matriz con las distancias del flock
+		public int[,] Adj; // Matriz de adjacencia geometrica
 
 // =============================================================================================
 
-		public Flock2D(int N, double L, double V, int k, double r){
+		public Flock2D(int n, double l, double v, int k){
 
-			elements = new Agent2D[N];
-			vels = new Vector2D[N];
-			pos = new Vector2D[N];
+			Elements = new Agent2D[n];
 
-			dists = new double[N,N];
-			adj = new int[N,N];
+			Dists = new double[n,n];
+			Adj = new int[n,n];
 
-			for (int i = 0; i < N; i++)
+			for (int i = 0; i < n; i++)
 			{
-				elements[i] = new Agent2D(L, V, k, r);
-				vels [i] = new Vector2D ();
-				for (int j = 0; j < elements[i].links.Length; j++) //generar enlaces con otros agentes arbitrarios
+				Elements[i] = new Agent2D(l, v, k);
+
+				for (int j = 0; j < Elements[i].Links.Length; j++) //generar enlaces con otros agentes arbitrarios
 				{
-					elements[i].links[j] = rnd.Next(0, N);
+					Elements[i].Links[j] = rnd.Next(0, n);
 				}
 			}
 		}
 
 // =============================================================================================
-		 public void SetMatrix(){
+		public void SetMatrix(double r){
 
+			Array.Clear(Adj,0,Adj.Length);
+			Array.Clear(Dists,0,Dists.Length);
 
-			Array.Clear(adj,0,adj.Length);
-			Array.Clear(dists,0,dists.Length);
+			for (int i = 0; i < Elements.Length; i++){
 
-//			Array.Clear(vels,0,vels.Length);
+				for (int j = i+1 ; j < Elements.Length ; j++){
 
-//			Console.WriteLine (vels.Length);
+					double d = Elements[i].Pos.Dist(Elements[j].Pos);
 
-//			Console.WriteLine ("limpia");
+					Dists[i,j] = d;
+					Dists[j,i] = d;
 
-//			for(int i = 0; i < elements.Length; i ++){
-//				for (int j = 0; j < elements.Length; j++){
-//
-//					Console.Write("{0}\t",adj[i,j]);
-//				}
-//				Console.WriteLine();
-//			}
-//
-//			Console.WriteLine();
-//			Console.WriteLine();
-
-//			for(int i = 0; i < vels.Length; i ++){
-//
-//				Console.Write("{0}\t",vels[i].Display());
-//			}
-//
-//			Console.WriteLine();
-//
-//			Console.WriteLine();
-//			Console.WriteLine();
-
-
-			for (int i = 0; i < elements.Length; i++){
-
-				vels [i] = elements[i].vel;
-				pos [i] = elements[i].pos;
-
-				for (int j = elements.Length - 1 ; j > i ; j--){
-
-					double d = elements[i].pos.Dist(elements[j].pos);
-
-					dists[i,j] = d;
-					dists[j,i] = d;
-
-					if ( d > 0 && d <= elements[i].r){
-						adj[i,j] = 1;
-						adj[j,i] = 1;
+					if ( d <= r){
+						Adj[i,j] = 1;
+						Adj[j,i] = 1;
 					}
 				}
 			}
 
-//			Console.WriteLine ("llena");
-//
-//			for(int i = 0; i < elements.Length; i ++){
-//				for (int j = 0; j < elements.Length; j++){
-//
-//					Console.Write("{0}\t",adj[i,j]);
-//				}
-//				Console.WriteLine();
-//			}
-//
-//			Console.WriteLine();
-//			Console.WriteLine();
-//
-//			for(int i = 0; i < elements.Length; i ++){
-//				for (int j = 0; j < elements.Length; j++){
-//
-//					Console.Write("{0}\t",dists[i,j]);
-//				}
-//				Console.WriteLine();
-//			}
-//
-//			Console.WriteLine();
-//			Console.WriteLine();
-
-//			for(int i = 0; i < vels.Length; i ++){
-//
-//				Console.Write("{0}\t",vels[i].Display());
-//			}
-//
-//			Console.WriteLine();
-//
-//			Console.WriteLine();
-//			Console.WriteLine();
 		}
 
 // =============================================================================================
 
-		public void AlignVels(double pg, double hg, double ht){ 
+		public double[] GetAngsIN(){
+
+			int n = Elements.Length;
+			int k = Elements [0].Links.Length;
+
+			var angs = new double[n];
+
+			if(k > 0){
+
+				for(int i = 0; i < n; i++){
+
+					var vecProm = new Vector2D (Elements[i].Vel);
+
+					for (int j = 0; j < k; j++) {
+						vecProm = vecProm + Elements [j].Vel;
+					}
+					vecProm = vecProm * (1 / k);
+
+					angs [i] = Elements [i].Vel.Ang (vecProm);
+				}
+			}
+
+			return angs;
+		}
+
+// =============================================================================================
+
+		public double[] GetAngsGeom(){
+
+			int n = Elements.Length;
+
+			var angs = new double[n];
+
+			for(int i = 0; i < n; i++){
+
+				double k = 0;
+
+				var vecProm = new Vector2D (Elements[i].Vel);
+
+				for (int j = 0; j < n; j++) {
+					if (Adj [i, j] == 1) {
+						vecProm = vecProm + Elements [j].Vel;
+						k += 1.0;
+					}
+				}
+
+				if (k > 0) {
+					vecProm = vecProm * (1 / k);
+					angs [i] = Elements [i].Vel.Ang (vecProm);
+				}
+			}
+
+			return angs;
+		}
+
+// =============================================================================================
+
+		public void AlignVels(double w, double eta){ 
 			// Actualiza las velocidades usando la matriz de adjacencia
 
-			MyRand rnd = new MyRand();
+			var angsIN = GetAngsIN ();
+			var angsGeom = GetAngsGeom ();
 
-			for(int i = 0; i < elements.Length ; i ++ ){
+			// Analysis disable once LocalVariableHidesMember
+			var rnd = new MyRand();
 
-				// se inicializan los vectores promedio con la de la particula
+			for(int i = 0; i < Elements.Length ; i ++ ){
 
-				Vector2D prom_geom = new Vector2D (vels[i]); 
-				Vector2D prom_topo = new Vector2D (vels[i]);
+				double ang = w * angsGeom [i] + (1 - w) * angsIN [i] + eta * (rnd.NextSimDouble (Math.PI));
 
-				double NG = 1;
-				double NT = (double)elements[i].links.Length;
-
-				double ang_geom = 0, ang_topo = 0;
-
-				for (int j = 0; j < elements.Length; j ++) {
-					prom_geom = prom_geom + ((double)adj[i,j])*vels[j];
-					NG += adj[i,j];
-				}
-
-				prom_geom = (1/NG) * prom_geom; // velocidad promedio geometrica
-
-				//ang_geom =  pg * ( vels[i].Ang(prom_geom) + hg*(rnd.NextSimDouble(Math.PI)) );
-				ang_geom =  pg * ( vels[i].Ang(prom_geom) );
-
-				if (NT != 0 ) {
-					foreach (int x in elements[i].links){
-						// Console.WriteLine(x);
-						prom_topo = prom_topo + vels[x];
-					}
-					prom_topo = (1/NT) * prom_topo; // velocidad promedio "topologica"
-				}
-	
-				//ang_topo =  Math.Abs(1-pg)*(vels[i].Ang(prom_topo) + ht*(rnd.NextSimDouble(Math.PI)));
-				ang_topo =  Math.Abs(1-pg)*(vels[i].Ang(prom_topo));
-	
-				//vels[i].Rotate(ang_geom + ang_topo );
-				vels[i].Rotate(ang_geom + ang_topo + hg*(rnd.NextSimDouble(Math.PI)) );
+				Elements[i].Vel.Rotate(ang);
 			}
 
-			for (int i = 0 ; i < elements.Length; i++ ) {
-				elements[i].vel = vels[i];
-			}
 		}
 
 // =============================================================================================
 
-		public void Update(double dt, double pg, double hg, double ht){
+		public void Update(double dt, double w, double eta, double r){
 
-			SetMatrix();
-			AlignVels(pg,hg,ht);
+			SetMatrix(r);
+			AlignVels(w,eta);
 
-			foreach(Agent2D agent in elements){
+			foreach(Agent2D agent in Elements){
 				agent.Move(dt);
-				// agent.AlignTopo(elements, Math.Abs(1-pg), ht);
-				// agent.AlignGeom(elements, pg, hg);
-				// agent.AlignBoth(elements, pg, hg, ht);
 			}
 		}
 

@@ -3,8 +3,3 @@
 /home/martin/GitRepos/Flock2D/lib/Vector2D/bin/Debug/Vector2D.dll
 /home/martin/GitRepos/Flock2D/lib/Vector2D/obj/Debug/Vector2D.dll
 /home/martin/GitRepos/Flock2D/lib/Vector2D/obj/Debug/Vector2D.dll.mdb
-/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/bin/Debug/Vector2D.dll.mdb
-/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/bin/Debug/Vector2D.dll
-/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/obj/Debug/Vector2D.dll
-/Users/martinzh/GitRepos/Flock2D/lib/Vector2D/obj/Debug/Vector2D.dll.mdb

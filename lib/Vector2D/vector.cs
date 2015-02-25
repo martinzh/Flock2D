@@ -1,73 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
+
+//using System.Collections.Generic;
+//using System.Collections;
 
 namespace Vector{
 
 	public class MyRand {
 
-		public Random rnd;
+		public Random Rnd;
 
 		public MyRand(){
-			this.rnd = new Random(Guid.NewGuid().GetHashCode());
+			Rnd = new Random (Guid.NewGuid ().GetHashCode ());
 		}
 
-		public double NextDouble(){ return this.rnd.NextDouble(); }
-		public double NextSimDouble(double L){ return 2*L * this.rnd.NextDouble() - L; }
+		public double NextDouble(){ return Rnd.NextDouble(); }
+		public double NextSimDouble(double l){ return 2*l * Rnd.NextDouble() - l; }
 	}
 
 	public class Vector2D
 	{
 		// ==================================== Elementos ==============================================
 
-		public double x, y;
+		public double X, Y;
 		public int Length;
 
 		// ==================================== Constructores ==========================================
 
-		public Vector2D() { x = y = 0; Length = 2; }
-		public Vector2D(double x, double y) { this.x = x; this.y = y; Length = 2; }
-		public Vector2D(Vector2D vec) { this.x = vec.x; this.y = vec.y; Length = 2; }
+		public Vector2D() { X = Y = 0; Length = 2; }
+		public Vector2D(double x, double y) { X = x; Y = y; Length = 2; }
+		public Vector2D(Vector2D vec) { X = vec.X; Y = vec.Y; Length = 2; }
 
 		// ==================================== Operadores ==============================================
 
 		public static Vector2D operator +(Vector2D v1, Vector2D v2){
-		return new Vector2D(v1.x + v2.x, v1.y + v2.y) ;}
+		return new Vector2D(v1.X + v2.X, v1.Y + v2.Y) ;}
 
 		public static Vector2D operator -(Vector2D v1, Vector2D v2){
-		return new Vector2D(v1.x - v2.x,v1.y - v2.y) ;}
+		return new Vector2D(v1.X - v2.X,v1.Y - v2.Y) ;}
 
 		public static Vector2D operator *(double l, Vector2D v){
-		return new Vector2D( l*v.x , l*v.y) ; }
+		return new Vector2D( l*v.X , l*v.Y) ; }
 
 		public static Vector2D operator *(Vector2D v, double l){
-		return new Vector2D( l*v.x , l*v.y) ; }
+		return new Vector2D( l*v.X , l*v.Y) ; }
 
 		// ==================================== Metodos ==============================================
 
-		public string Display() { return this.x + "\t" + this.y ; }
+		public string Display() { return X + "\t" + Y ; }
 
-		public double Norm(){ return Math.Sqrt( x*x + y*y ); }
+		public double Norm(){ return Math.Sqrt( X*X + Y*Y ); }
 
-		public double Dot(Vector2D vec){return x*vec.x + y*vec.y ;}
+		public double Norm2(){ return X*X + Y*Y ; }
+
+		public double Dot(Vector2D vec){return X*vec.X + Y*vec.Y ;}
 
 		public double Dist(Vector2D vec){return (this-vec).Norm() ;}
 
+		public double Dist2(Vector2D vec){return (this-vec).Norm2() ;}
+
 		public double Ang(Vector2D vec){
 
-			double a1 = Math.Atan2(x,y);
-			double a2 = Math.Atan2(vec.x,vec.y);
+			double a1 = Math.Atan2(X,Y);
+			double a2 = Math.Atan2(vec.X,vec.Y);
 
 			return a2-a1;
 		}
 
 		public void Rotate(double ang) {
 
-			double X = x*Math.Cos(ang)-y*Math.Sin(ang);
-			double Y = x*Math.Sin(ang)+y*Math.Cos(ang);
+			double nX = X*Math.Cos(ang)-Y*Math.Sin(ang);
+			double nY = X*Math.Sin(ang)+Y*Math.Cos(ang);
 
-			x = X;
-			y = Y;
+			X = nX;
+			Y = nY;
 		}
 	}
 }

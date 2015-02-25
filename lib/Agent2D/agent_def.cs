@@ -9,84 +9,74 @@ namespace Agent{
 		// V --> vel maxima
 		// k --> numero de interacciones
 
-		public Vector2D pos, vel;
-		public int[] links;
-		public double r;
+		public Vector2D Pos, Vel;
+		public int[] Links;
 
 // =============================================================================================
 
-		public Agent2D(double L, double V, int k, double r){
+		public Agent2D(double l, double v, int k){
 
-			MyRand rnd = new MyRand();
+			var rnd = new MyRand();
 
-			this.pos = new Vector2D(rnd.NextSimDouble(L), rnd.NextSimDouble(L));
-			this.vel = new Vector2D(rnd.NextSimDouble(1), rnd.NextSimDouble(1));
+			Pos = new Vector2D (rnd.NextSimDouble (l), rnd.NextSimDouble (l));
+			Vel = new Vector2D (rnd.NextSimDouble (1), rnd.NextSimDouble (1));
 
-			this.vel = V * (1/this.vel.Norm()) * this.vel;  // velocidad con direccion aleatoria y magnitud unitaria
-
-			// Console.WriteLine(this.vel.Norm());
+			Vel = v * (1 / Vel.Norm ()) * Vel;  // velocidad con direccion aleatoria y magnitud unitaria
 
 			// Console.WriteLine("pos = " + this.pos.ToString() + "  vel = " + this.vel.ToString() + " V = " + this.vel.Norm());
 
-			links = new int[k];
-
-			this.r = r;
+			Links = new int[k];
 		}
 
 // =============================================================================================
 
 		public  void Move(double dt){
-			pos = pos + dt*vel;
+			Pos = Pos + dt*Vel;
 		}
 			
 // =============================================================================================
 
 		public void AlignTopo(Agent2D[] elements, double pt, double ht){ 
 
+			const double EPSILON = 10e-8;
 			// con respecto a su vecindad topologica
 
-			// Random rnd = new Random(Guid.NewGuid().GetHashCode());
+			var rnd = new MyRand();
 
-			MyRand rnd = new MyRand();
-
-			Vector2D prom = new Vector2D(vel);   // se inicializa como la vel propia para considerarla en el prom
+			var prom = new Vector2D(Vel);   // se inicializa como la vel propia para considerarla en el prom
 
 			// Console.WriteLine(prom.ToString());
 
-			// double N = (double)this.links.Length;
-			double N = (double)links.Length;
+			double N = (double)Links.Length;
 
-			if (N != 0 ) {
-				// foreach (int x in this.links) {
-				foreach (int x in links) {
+			if (Math.Abs (N) > EPSILON ) {
+
+				foreach (int x in Links) {
 					// Console.WriteLine(x);
-					prom = prom + elements[x].vel;
+					prom = prom + elements[x].Vel;
 				}
 				prom = (1/N) * prom;
 			}        
 
-			// Console.WriteLine(prom.ToString());
+			if (Math.Abs (Vel.Norm ()) > EPSILON && Math.Abs (prom.Norm ()) > EPSILON) {
 
-			// double nv = this.vel.Norm();
-			// double np = prom.Norm();
+				double ang =  pt*(Vel.Ang(prom) + ht*(rnd.NextSimDouble(Math.PI)));
 
-			if (vel.Norm() != 0 && prom.Norm() != 0) {
-
-				double ang =  pt*(vel.Ang(prom) + ht*(rnd.NextSimDouble(Math.PI)));
-
-				vel.Rotate(ang);
+				Vel.Rotate(ang);
 			} 
 		}
 
 // =============================================================================================
 
-		public void AlignGeom(Agent2D[] elements, double pg, double hg){ 
+		public void AlignGeom(Agent2D[] elements, double pg, double hg, double r){ 
 
 			// con respecto a su vecindad geometrica
+			const double EPSILON = 10e-8;
 
-			MyRand rnd = new MyRand();
+			var rnd = new MyRand();
 
-			Vector2D prom = new Vector2D();   // se inicializa como la vel propia para considerarla en el prom
+			var prom = new Vector2D();  
+			// se inicializa como la vel propia para considerarla en el prom
 
 			// Console.WriteLine(prom.ToString());
 
@@ -94,12 +84,12 @@ namespace Agent{
 
 			foreach (Agent2D agent in elements) {
 
-				double d = pos.Dist(agent.pos);
+				double d = Pos.Dist(agent.Pos);
 
 				// Console.WriteLine(d);
 
 				if ( d > 0 && d <= r) {
-					prom = prom + agent.vel;
+					prom = prom + agent.Vel;
 					N += 1;
 				}
 			}
@@ -112,14 +102,11 @@ namespace Agent{
 
 				// Console.WriteLine(prom.ToString());
 
-				// double nv = this.vel.Norm();
-				// double np = prom.Norm();
+				if (Math.Abs (Vel.Norm ()) > EPSILON && Math.Abs (prom.Norm ()) > EPSILON) {
 
-				if ( vel.Norm() != 0 && prom.Norm() != 0) {
+					double ang =  pg*( Vel.Ang(prom) + hg*(rnd.NextSimDouble(Math.PI)) );
 
-					double ang =  pg*( vel.Ang(prom) + hg*(rnd.NextSimDouble(Math.PI)) );
-
-					vel.Rotate(ang);
+					Vel.Rotate(ang);
 
 				}
 			}
@@ -129,13 +116,15 @@ namespace Agent{
 
 // =============================================================================================
 
-		public void AlignBoth(Agent2D[] elements, double pg, double hg, double ht){ 
+		public void AlignBoth(Agent2D[] elements, double pg, double hg, double ht, double r){ 
 			// con respecto a las dos vecindades
 
-			MyRand rnd = new MyRand();
+			const double EPSILON = 10e-8;
 
-			Vector2D prom_geom = new Vector2D(vel);   // se inicializa como la vel propia para considerarla en el prom
-			Vector2D prom_topo = new Vector2D(vel);   // se inicializa como la vel propia para considerarla en el prom
+			var rnd = new MyRand();
+
+			var prom_geom = new Vector2D(Vel);   // se inicializa como la vel propia para considerarla en el prom
+			var prom_topo = new Vector2D(Vel);   // se inicializa como la vel propia para considerarla en el prom
 
 			double ang_geom = 0, ang_topo = 0;
 
@@ -145,48 +134,38 @@ namespace Agent{
 
 			foreach (Agent2D agent in elements) {
 
-				double d = pos.Dist(agent.pos);
+				double d = Pos.Dist(agent.Pos);
 
 				// Console.WriteLine(d);
 
 				if ( d > 0 && d <= r) {
-					prom_geom = prom_geom + agent.vel;
+					prom_geom = prom_geom + agent.Vel;
 					NG += 1;
 				}
 			}
 
-			// Console.WriteLine("vel_i = " + vel.ToString() + " N =" + N);
-
-			// if(NG > 0) {
-
 			prom_geom = (1/NG) * prom_geom;
 
-			// if ( vel.Norm() != 0 && prom_geom.Norm() != 0) {
+			ang_geom =  pg * ( Vel.Ang(prom_geom) + hg*(rnd.NextSimDouble(Math.PI)) );
 
-			ang_geom =  pg * ( vel.Ang(prom_geom) + hg*(rnd.NextSimDouble(Math.PI)) );
-			// }
-			// }
+			double NT = (double)Links.Length;
 
-			double NT = (double)links.Length;
-
-			if (NT != 0 ) {
-				foreach (int x in links) {
+			if (Math.Abs (NT) > EPSILON) {
+				foreach (int x in Links) {
 					// Console.WriteLine(x);
-					prom_topo = prom_topo + elements[x].vel;
+					prom_topo = prom_topo + elements [x].Vel;
 				}
-				prom_topo = (1/NT) * prom_topo;
+				prom_topo = (1 / NT) * prom_topo;
 			}        
 
-			// if (vel.Norm() != 0 && prom_topo.Norm() != 0) {
+			ang_topo =  Math.Abs(1-pg)*(Vel.Ang(prom_topo) + ht*(rnd.NextSimDouble(Math.PI)));
 
-			ang_topo =  Math.Abs(1-pg)*(vel.Ang(prom_topo) + ht*(rnd.NextSimDouble(Math.PI)));
-			// }
-
-			vel.Rotate(ang_geom + ang_topo);
+			Vel.Rotate(ang_geom + ang_topo);
 
 		}
 // =============================================================================================
 
+// =============================================================================================
 	}
 }
 

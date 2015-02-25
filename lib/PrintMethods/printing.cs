@@ -1,103 +1,116 @@
-﻿using System;
+﻿
 using System.IO;
-using System.Collections.Generic;
 using System.Collections;
 using Agent;
 using Vector;
 using Flock;
 
+//using System;
+//using System.Collections.Generic;
+
 namespace DataLogger{
 
-	public class Logger{
+	public static class Logger{
 
-	public Logger (){}
+	//public Logger (){}
 
 // =============================================================================================
 
-		public static void Print_pos(Flock2D flock, StreamWriter st_data, int t){
+		public static void PrintPos(Flock2D flock, StreamWriter stData){
 
-			// string str = "";
-			string str = t + "\t";
+			string str = "";
 
-//			foreach (Agent2D agent in flock.elements){
-//				str = str + agent.pos.Display() + "\t";
-//			}
+			//foreach (Agent2D bird in flock.Elements){
+			//	str = str + bird.Pos.Display() + "\t";
+			//}
 
-			foreach (Vector2D vec in flock.pos){
-				str = str + vec.Display() + "\t";
+			int n = flock.Elements.Length;
+
+			for (int i = 0; i < n; i++) {
+
+				if (i < n - 1) {
+					str = str + flock.Elements [i].Pos.Display () + "\t";
+				} else {
+					str = str + flock.Elements [i].Pos.Display ();
+				}
 			}
 
-			st_data.WriteLine(str);
+			stData.WriteLine(str);
 		}
 
 // =============================================================================================
 
-		public static void Print_vel(Flock2D flock, StreamWriter st_data, int t){
+		public static void PrintVel(Flock2D flock, StreamWriter stData){
 
-			string str = t + "\t";
+			string str = "";
 
-//			string str = "";
+			//foreach (Agent2D bird in flock.Elements){
+			//	str = str + bird.Vel.Display() + "\t";
+			//}
 
-//			foreach (Agent2D agent in flock.elements){
-//				str = str + agent.vel.Display() + "\t";
-//			}
+			int n = flock.Elements.Length;
 
-			foreach (Vector2D vec in flock.vels){
-				str = str + vec.Display() + "\t";
+			for (int i = 0; i < n; i++) {
+
+				if (i < n - 1) {
+					str = str + flock.Elements [i].Vel.Display () + "\t";
+				} else {
+					str = str + flock.Elements [i].Vel.Display ();
+				}
 			}
 
-			st_data.WriteLine(str);
+			stData.WriteLine(str);
 		}
 
 // =============================================================================================
 
-		public static void Print_CM(Flock2D flock, StreamWriter st_data, StreamWriter st_data1, int t){
+		public static void PrintCM(Flock2D flock, StreamWriter stData, StreamWriter stData1, int t){
 			
-			Vector2D cm = new Vector2D();
+			var cm = new Vector2D();
 			double R = 0;
 
 			string str = t + "\t";
 			string str1 = t + "\t";
 
-			foreach (Agent2D agent in flock.elements){
-				cm = cm + agent.pos;
-				R += agent.pos.Norm();
+			foreach (Agent2D agent in flock.Elements){
+				cm = cm + agent.Pos;
+				R += agent.Pos.Norm();
 			}
 
-			cm = (1/(double)flock.elements.Length) * cm;
-			R /= (1/(double)flock.elements.Length);
+			cm = (1/(double)flock.Elements.Length) * cm;
+			R /= (1/(double)flock.Elements.Length);
 
 			str = str + cm.Display();
 			str1 = str1 + R;
 
-			st_data.WriteLine(str);
-			st_data1.WriteLine(str1);
+			stData.WriteLine(str);
+			stData1.WriteLine(str1);
 		}
 
 // =============================================================================================
 
-		public static double CalcPsi(Flock2D flock, double Vo){   
-			Vector2D vel_prom = new Vector2D();
+		public static double CalcPsi(Flock2D flock, double vo){   
+			var vel_prom = new Vector2D();
 
-			foreach (Agent2D agent in flock.elements){
-				vel_prom = vel_prom + agent.vel;    
+			foreach (Agent2D agent in flock.Elements){
+				vel_prom = vel_prom + agent.Vel;    
 			}
 
-			double psi = (1/(double)flock.elements.Length*Vo) * vel_prom.Norm();
+			double psi = (1/(double)flock.Elements.Length*vo) * vel_prom.Norm();
 
 			return psi;
 		}
 
 // =============================================================================================
 
-		public static void CalcPsi(Flock2D flock, double Vo, int t, StreamWriter stw){
-			Vector2D vel_prom = new Vector2D();
+		public static void CalcPsi(Flock2D flock, double vo, int t, StreamWriter stw){
+			var vel_prom = new Vector2D();
 
-			foreach (Agent2D agent in flock.elements) {
-				vel_prom = vel_prom + agent.vel;    
+			foreach (Agent2D agent in flock.Elements) {
+				vel_prom = vel_prom + agent.Vel;    
 			}
 
-			double psi = (1/(double)flock.elements.Length*Vo) * vel_prom.Norm();
+			double psi = (1/(double)flock.Elements.Length*vo) * vel_prom.Norm();
 
 			string s = t + "\t" + psi ;
 
@@ -109,15 +122,15 @@ namespace DataLogger{
 
 		public static void CalcDistR(Flock2D flock, StreamWriter stw, int t, int tf){
 
-			double num_bin = 50;
+			const double num_bin = 50;
 
-			int[] hist = new int[(int)num_bin];
+			var hist = new int[(int)num_bin];
 
-			ArrayList dist = new ArrayList();
+			var dist = new ArrayList();
 
-			foreach (Agent2D ag1 in flock.elements) {                
-				foreach (Agent2D ag2 in flock.elements) {
-					double d = ag1.pos.Dist(ag2.pos); 
+			foreach (Agent2D ag1 in flock.Elements) {                
+				foreach (Agent2D ag2 in flock.Elements) {
+					double d = ag1.Pos.Dist(ag2.Pos); 
 					if(d>0) dist.Add(d);
 				}
 			}
@@ -187,23 +200,27 @@ namespace DataLogger{
 
 // =============================================================================================
 
-		public static void PrintMatrixDist(int t, double[,] matrix, int M, int N, string folder){
+		public static void PrintMatrixDist(int t, double[,] matrix, int m, int n, string folder){
 
 			string paso = folder + "/dist_mat/" + t + ".dat";
 
 //			Console.WriteLine(paso);
 
-			FileStream fst = new FileStream(paso, FileMode.Create);
+			var fst = new FileStream(paso, FileMode.Create);
 
-			StreamWriter stw = new StreamWriter(fst);
+			var stw = new StreamWriter(fst);
 
 			// stw.WriteLine("#{0}#",t);
 
-			for(int i = 0; i < M; i ++){
+			for(int i = 0; i < m; i ++){
 
-				for (int j = 0; j < N; j++){
+				for (int j = 0; j < n; j++){
 
-					stw.Write( "{0}\t" , matrix[i,j] );
+					if(j < n-1){
+						stw.Write( "{0}\t" , matrix[i,j] );
+					}else{
+						stw.Write( "{0}" , matrix[i,j] );
+					}
 
 				}
 
@@ -214,23 +231,23 @@ namespace DataLogger{
 
 // =============================================================================================
 
-		public static void PrintMatrixAdj(int t, int[,] matrix, int M, int N, string folder){
+		public static void PrintMatrixAdj(int t, int[,] matrix, int m, int n, string folder){
 
 			string paso = folder + "/adj_mat/" + t + ".dat";
 
 //			Console.WriteLine(paso);
 
-			FileStream fst = new FileStream(paso, FileMode.Create);
+			var fst = new FileStream(paso, FileMode.Create);
 
-			StreamWriter stw = new StreamWriter(fst);
+			var stw = new StreamWriter(fst);
 
 			// stw.WriteLine("#{0}#",t);
 
-			for(int i = 0; i < M; i ++){
+			for(int i = 0; i < m; i ++){
 
 				stw.Write("{0}\t",i);
 
-				for (int j = 0; j < N; j++){
+				for (int j = 0; j < n; j++){
 
 					if (matrix[i,j] != 0) stw.Write("{0}\t",j*matrix[i,j]);
 
