@@ -42,12 +42,13 @@ namespace Swarm2D
 				k 	 = Convert.ToInt32(args [0]);
 				eta  = Convert.ToDouble(args[1]);
 				p    = Convert.ToDouble(args[2]);
-				tf   = Convert.ToInt32(args[3]);
-				step = Convert.ToInt32(args[4]);
+				w    = Convert.ToDouble(args[3]);
+				tf   = Convert.ToInt32(args[4]);
+				step = Convert.ToInt32(args[5]);
 
 
 				//folder = "./DATOS/data_eta" + args[1] + "_k" + args[0];
-				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + args[1] + "_k" + args[0];
+				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + args[1] + "_k" + args[0] + "_w" + args[3];
 				
 			}
 			else { // valores default
@@ -57,15 +58,14 @@ namespace Swarm2D
 				tf   = 1000;
 				step = 50;
 				p    = 500.0;
-
+				w 	 = 0.5;
 				//folder = "./DATOS/data_eta" + eta + "_k" + k ;
-				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + eta + "_k" + k ;				
+				folder = "/home/martin/DATOS_SIMS/DATOS/data_eta" + eta + "_k" + k + "_w" + w;
 			}
 
 			dt 	   = 1.0;
 			v0     = 1.0;
 			regVel = 0.08;
-			w 	   = 0.0;
 
 			r0 = v0*dt/regVel;
 			//l = r0;
